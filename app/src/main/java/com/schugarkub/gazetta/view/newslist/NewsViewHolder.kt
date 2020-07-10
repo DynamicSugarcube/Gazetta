@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.schugarkub.gazetta.R
-import com.schugarkub.gazetta.model.NewsItem
+import com.schugarkub.gazetta.model.entity.NewsItem
 import com.schugarkub.gazetta.view.newsdetails.NewsDetailsActivity
 
 class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

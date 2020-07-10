@@ -2,7 +2,7 @@
  * Copyright (c) 2020. Schugarkub
  */
 
-package com.schugarkub.gazetta.model
+package com.schugarkub.gazetta.model.entity
 
 import java.util.Date
 
