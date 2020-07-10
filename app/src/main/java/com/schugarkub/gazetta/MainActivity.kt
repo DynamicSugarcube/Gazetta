@@ -5,7 +5,7 @@ package com.schugarkub.gazetta
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.schugarkub.gazetta.view.NewsListFragment
+import com.schugarkub.gazetta.view.newslist.NewsListFragment
 
 class MainActivity : AppCompatActivity() {
 

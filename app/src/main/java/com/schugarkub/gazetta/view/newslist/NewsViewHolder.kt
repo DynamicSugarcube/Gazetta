@@ -2,7 +2,7 @@
  * Copyright (c) 2020. Schugarkub
  */
 
-package com.schugarkub.gazetta.view
+package com.schugarkub.gazetta.view.newslist
 
 import android.view.LayoutInflater
 import android.view.View
