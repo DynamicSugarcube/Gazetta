@@ -9,6 +9,6 @@ import retrofit2.http.GET
 
 interface NewsApiService {
 
-    @GET("top-headlines?sources=bbc-news")
+    @GET("top-headlines?country=us")
     fun getNewsFeedAsync(): Deferred<NewsApiResponse>
 }
