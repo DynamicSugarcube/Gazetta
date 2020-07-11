@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.schugarkub.gazetta.R
-import com.schugarkub.gazetta.model.entity.NewsItem
+import com.schugarkub.gazetta.model.entity.Article
 import com.schugarkub.gazetta.view.newsdetails.NewsDetailsActivity
 
 class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -22,10 +22,10 @@ class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val author: TextView = itemView.findViewById(R.id.news_item_author)
     private val date: TextView = itemView.findViewById(R.id.news_item_date)
 
-    fun bind(newsItem: NewsItem) {
-        title.text = newsItem.title
-        author.text = newsItem.author
-        date.text = newsItem.date.toString()
+    fun bind(article: Article) {
+        title.text = article.title
+        author.text = article.author
+        date.text = article.date
 
         title.setOnClickListener {
             val intent = Intent(context, NewsDetailsActivity::class.java).apply {
