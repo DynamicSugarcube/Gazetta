@@ -2,7 +2,7 @@
  * Copyright (c) 2020. Schugarkub
  */
 
-package com.schugarkub.gazetta.model.networking
+package com.schugarkub.gazetta.model.network
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.schugarkub.gazetta.BuildConfig

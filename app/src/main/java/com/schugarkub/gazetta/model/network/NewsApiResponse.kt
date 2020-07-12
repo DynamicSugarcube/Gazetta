@@ -2,7 +2,7 @@
  * Copyright (c) 2020. Schugarkub
  */
 
-package com.schugarkub.gazetta.model.networking
+package com.schugarkub.gazetta.model.network
 
 import com.schugarkub.gazetta.model.entity.Article
 import com.squareup.moshi.Json
