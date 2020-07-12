@@ -16,11 +16,8 @@ import com.bumptech.glide.Glide
 import com.schugarkub.gazetta.R
 import com.schugarkub.gazetta.model.entity.Article
 import com.schugarkub.gazetta.view.newsdetails.NewsDetailsActivity
-import timber.log.Timber
 
 class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-    private val context = itemView.context
 
     private val title: TextView = itemView.findViewById(R.id.news_item_title)
     private val author: TextView = itemView.findViewById(R.id.news_item_author)
@@ -33,17 +30,7 @@ class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         author.setTextOrMakeGone(article.author)
         date.setTextOrMakeGone(article.date)
         image.setImageUrlOrMakeGone(article.imageUrl)
-
-        seeDetailsButton.setOnClickListener {
-            if (article.url.isNullOrBlank()) {
-                Timber.w("No URL provided!")
-            } else {
-                val intent = Intent(context, NewsDetailsActivity::class.java).apply {
-                    putExtra(NewsDetailsActivity.EXTRA_URL, article.url)
-                }
-                context.startActivity(intent)
-            }
-        }
+        seeDetailsButton.setOnClickListenerOrMakeGone(article.url)
     }
 
     private fun TextView.setTextOrMakeGone(textString: String?) {
@@ -54,11 +41,24 @@ class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         }
     }
 
-    private fun ImageView.setImageUrlOrMakeGone(url: String?) {
+    private fun ImageView.setImageUrlOrMakeGone(imageUrl: String?) {
+        if (imageUrl.isNullOrBlank()) {
+            visibility = View.GONE
+        } else {
+            Glide.with(context).load(imageUrl).into(this)
+        }
+    }
+
+    private fun Button.setOnClickListenerOrMakeGone(url: String?) {
         if (url.isNullOrBlank()) {
             visibility = View.GONE
         } else {
-            Glide.with(context).load(url).into(this)
+            setOnClickListener {
+                val intent = Intent(context, NewsDetailsActivity::class.java).apply {
+                    putExtra(NewsDetailsActivity.EXTRA_URL, url)
+                }
+                context.startActivity(intent)
+            }
         }
     }
 
