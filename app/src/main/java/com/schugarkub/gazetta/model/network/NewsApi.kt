@@ -6,6 +6,9 @@ package com.schugarkub.gazetta.model.network
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.schugarkub.gazetta.BuildConfig
+import com.schugarkub.gazetta.model.entity.Article
+import com.schugarkub.gazetta.model.entity.NetworkArticle
+import com.squareup.moshi.Json
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.Interceptor
@@ -52,3 +55,7 @@ object NewsApi {
     private const val NEWS_BASE_URL = "https://newsapi.org/v2/"
     private const val API_KEY_PARAMETER = "apiKey"
 }
+
+data class NewsApiResponse(
+    @Json(name = "articles") val articles: List<NetworkArticle>
+)

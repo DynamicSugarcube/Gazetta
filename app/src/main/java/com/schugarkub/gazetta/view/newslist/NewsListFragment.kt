@@ -21,6 +21,7 @@ import com.schugarkub.gazetta.viewmodel.newslist.NewsListViewModelFactory
 
 class NewsListFragment : Fragment() {
 
+    private lateinit var newsAdapter: NewsAdapter
     private lateinit var newsRecyclerView: RecyclerView
 
     private lateinit var newsListViewModel: NewsListViewModel
@@ -33,7 +34,7 @@ class NewsListFragment : Fragment() {
             .get(NewsListViewModel::class.java)
 
         newsListViewModel.articlesLiveData.observe(
-            this, Observer { articles -> setupRecyclerView(articles) }
+            this, Observer { articles -> newsAdapter.articles = articles }
         )
     }
 
@@ -44,16 +45,13 @@ class NewsListFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_news_list, container, false)
 
         val newsLayoutManager = LinearLayoutManager(context)
+        newsAdapter = NewsAdapter()
         newsRecyclerView = view.findViewById<RecyclerView>(R.id.news_recycler_view).apply {
             setHasFixedSize(true)
+            adapter = newsAdapter
             layoutManager = newsLayoutManager
         }
 
         return view
-    }
-
-    private fun setupRecyclerView(articles: List<Article>) {
-        val newsAdapter = NewsAdapter(articles)
-        newsRecyclerView.adapter = newsAdapter
     }
 }
