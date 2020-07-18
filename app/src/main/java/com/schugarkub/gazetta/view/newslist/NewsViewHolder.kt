@@ -14,7 +14,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.schugarkub.gazetta.R
-import com.schugarkub.gazetta.model.entity.Article
+import com.schugarkub.gazetta.model.domain.Article
 import com.schugarkub.gazetta.view.newsdetails.NewsDetailsActivity
 
 class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

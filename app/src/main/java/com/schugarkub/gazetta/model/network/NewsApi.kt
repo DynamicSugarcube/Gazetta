@@ -6,8 +6,6 @@ package com.schugarkub.gazetta.model.network
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.schugarkub.gazetta.BuildConfig
-import com.schugarkub.gazetta.model.entity.Article
-import com.schugarkub.gazetta.model.entity.NetworkArticle
 import com.squareup.moshi.Json
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory

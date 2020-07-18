@@ -5,17 +5,15 @@
 package com.schugarkub.gazetta.view.newslist
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
 import com.schugarkub.gazetta.R
-import com.schugarkub.gazetta.model.entity.Article
 import com.schugarkub.gazetta.viewmodel.newslist.NewsListViewModel
 import com.schugarkub.gazetta.viewmodel.newslist.NewsListViewModelFactory
 
@@ -29,7 +27,7 @@ class NewsListFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val newsListViewModelFactory = NewsListViewModelFactory()
+        val newsListViewModelFactory = NewsListViewModelFactory(activity!!.application)
         newsListViewModel = ViewModelProvider(this, newsListViewModelFactory)
             .get(NewsListViewModel::class.java)
 

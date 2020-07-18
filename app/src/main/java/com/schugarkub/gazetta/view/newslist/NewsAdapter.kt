@@ -7,7 +7,7 @@ package com.schugarkub.gazetta.view.newslist
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.schugarkub.gazetta.model.entity.Article
+import com.schugarkub.gazetta.model.domain.Article
 
 class NewsAdapter : RecyclerView.Adapter<NewsViewHolder>() {
 
