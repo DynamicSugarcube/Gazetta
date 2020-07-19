@@ -4,6 +4,7 @@
 
 package com.schugarkub.gazetta.model.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -16,7 +17,7 @@ interface ArticlesDao {
     fun insertArticles(articles: List<DatabaseArticle>)
 
     @Query("SELECT * FROM $DATABASE_NAME ORDER BY date DESC")
-    fun getArticles(): List<DatabaseArticle>
+    fun getArticles(): LiveData<List<DatabaseArticle>>
 
     @Query("DELETE FROM $DATABASE_NAME")
     fun clear()

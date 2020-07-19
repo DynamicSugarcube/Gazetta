@@ -7,7 +7,6 @@ package com.schugarkub.gazetta.viewmodel.newslist
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.schugarkub.gazetta.model.database.ArticlesDatabase
 import com.schugarkub.gazetta.model.domain.Article
 import com.schugarkub.gazetta.model.repository.NewsRepository
@@ -29,9 +28,7 @@ class NewsListViewModel(application: Application) : AndroidViewModel(application
         )
     )
 
-    private val _articlesLiveData by lazy { MutableLiveData<List<Article>>() }
-    val articlesLiveData: LiveData<List<Article>>
-        get() = _articlesLiveData
+    val articlesLiveData: LiveData<List<Article>> = newsRepository.articles
 
     init {
         refreshData()
@@ -39,7 +36,7 @@ class NewsListViewModel(application: Application) : AndroidViewModel(application
 
     private fun refreshData() = viewModelScope.launch {
         try {
-            _articlesLiveData.value = newsRepository.refreshNewsFeed()
+            newsRepository.refreshNewsFeed()
         } catch (networkException: IOException) {
             Timber.e(networkException, "Exception encountered while fetching news feed")
         }

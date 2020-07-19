@@ -4,8 +4,9 @@
 
 package com.schugarkub.gazetta.model.repository
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations
 import com.schugarkub.gazetta.model.database.ArticlesDatabase
-import com.schugarkub.gazetta.model.database.DatabaseArticle
 import com.schugarkub.gazetta.model.database.DatabaseArticle.Utils.toDomainArticles
 import com.schugarkub.gazetta.model.domain.Article
 import com.schugarkub.gazetta.model.network.NetworkArticle
@@ -18,13 +19,13 @@ import java.io.IOException
 
 class NewsRepository(private val database: ArticlesDatabase) {
 
-    suspend fun refreshNewsFeed(): List<Article> = withContext(Dispatchers.IO) {
+    val articles: LiveData<List<Article>> = Transformations.map(database.dao.getArticles()) {
+        it.toDomainArticles()
+    }
+
+    suspend fun refreshNewsFeed() = withContext(Dispatchers.IO) {
         val networkArticles = getArticlesOverNetwork()
         networkArticles?.let { cacheArticles(networkArticles) }
-        return@withContext when (val articles = getArticlesFromCache()?.toDomainArticles()) {
-            null -> emptyList()
-            else -> articles
-        }
     }
 
     private suspend fun getArticlesOverNetwork(): List<NetworkArticle>? =
@@ -33,16 +34,6 @@ class NewsRepository(private val database: ArticlesDatabase) {
                 NewsApi.retrofitService.getNewsFeedAsync().await().articles
             } catch (exception: IOException) {
                 Timber.w(exception, "Couldn't get news feed over network.")
-                null
-            }
-        }
-
-    private suspend fun getArticlesFromCache(): List<DatabaseArticle>? =
-        withContext(Dispatchers.IO) {
-            return@withContext try {
-                database.dao.getArticles()
-            } catch (exception: IOException) {
-                Timber.w(exception, "Couldn't get news feed from cache.")
                 null
             }
         }
