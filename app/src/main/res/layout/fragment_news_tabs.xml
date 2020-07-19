@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2020. Schugarkub
+  -->
+
+<com.google.android.material.tabs.TabLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollable_tabs"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:background="@color/colorPrimary"
+    app:tabMinWidth="@dimen/tab_min_width"
+    app:tabMode="scrollable"
+    app:tabTextColor="@android:color/white">
+
+    <com.google.android.material.tabs.TabItem
+        android:id="@+id/business_tab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/icon_business"
+        android:text="@string/business_tab" />
+
+    <com.google.android.material.tabs.TabItem
+        android:id="@+id/entertainment_tab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/icon_entertainment"
+        android:text="@string/entertainment_tab" />
+
+    <com.google.android.material.tabs.TabItem
+        android:id="@+id/general_tab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/icon_general"
+        android:text="@string/general_tab" />
+
+    <com.google.android.material.tabs.TabItem
+        android:id="@+id/health_tab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/icon_health"
+        android:text="@string/health_tab" />
+
+    <com.google.android.material.tabs.TabItem
+        android:id="@+id/science_tab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/icon_science"
+        android:text="@string/science_tab" />
+
+    <com.google.android.material.tabs.TabItem
+        android:id="@+id/sports_tab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/icon_sports"
+        android:text="@string/sports_tab" />
+
+    <com.google.android.material.tabs.TabItem
+        android:id="@+id/technology_tab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/icon_technology"
+        android:text="@string/technology_tab" />
+
+</com.google.android.material.tabs.TabLayout>

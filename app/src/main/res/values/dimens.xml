@@ -8,4 +8,5 @@
     <dimen name="card_corner_radius">6dp</dimen>
     <dimen name="news_text_height">20dp</dimen>
     <dimen name="news_image_height">110dp</dimen>
+    <dimen name="tab_min_width">135dp</dimen>
 </resources>

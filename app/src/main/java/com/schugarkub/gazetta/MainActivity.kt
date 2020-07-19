@@ -3,9 +3,11 @@
  */
 package com.schugarkub.gazetta
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.schugarkub.gazetta.view.newslist.NewsListFragment
+import com.schugarkub.gazetta.view.newstabs.NewsTabsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,12 +15,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val fragmentManager = supportFragmentManager
+        buildFragment(R.id.news_tabs_container, NewsTabsFragment::class.java)
+        buildFragment(R.id.news_feed_container, NewsListFragment::class.java)
+    }
 
-        var fragment = fragmentManager.findFragmentById(R.id.fragment_container)
+    private fun <T: Fragment> buildFragment(fragmentId: Int, fragmentClass: Class<T>) {
+        var fragment = supportFragmentManager.findFragmentById(fragmentId)
         if (fragment == null) {
-            fragment = NewsListFragment()
-            fragmentManager.beginTransaction().add(R.id.fragment_container, fragment).commit()
+            fragment = fragmentClass.newInstance()
+            supportFragmentManager.beginTransaction()
+                .add(fragmentId, fragment)
+                .commit()
         }
     }
 }
