@@ -9,7 +9,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [DatabaseArticle::class], version = 2)
+@Database(entities = [DatabaseArticle::class], version = 3)
 abstract class ArticlesDatabase : RoomDatabase() {
 
     abstract val dao: ArticlesDao
